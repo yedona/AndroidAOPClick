@@ -49,8 +49,6 @@ public class AopClickAspect {
     public void onViewClicked(ProceedingJoinPoint joinPoint) {
         try {
 
-            Log.d("yedona", "onViewClicked: 有点击事件进来了");
-
             if (!AopClickUtils.isFilter) {
                 //如果关闭，就不拦截，直接执行
                 joinPoint.proceed();
@@ -65,7 +63,6 @@ public class AopClickAspect {
                 boolean isExcept = method != null && method.isAnnotationPresent(Except.class);
                 if (isExcept) {
                     joinPoint.proceed();
-                    Log.d("yedona", "onViewClicked: 有注解");
                     return;
                 }
             }
@@ -74,13 +71,11 @@ public class AopClickAspect {
             if (view == null) {
                 //位置类型，直接执行点击事件
                 joinPoint.proceed();
-                Log.d("yedona", "onViewClicked: 未知类型");
                 return;
             }
             Long lastClickTime = getTimeLeack(view);
             if (lastClickTime == null) {
                 //第一次点击，直接执行点击事件
-                Log.d("yedona", "onViewClicked: 第一次点击");
                 //给View设置点击时的时间
                 setTime(view);
                 joinPoint.proceed();
@@ -89,7 +84,6 @@ public class AopClickAspect {
             //判断两次点击之间的时间
             if (canClick(lastClickTime)) {
                 //超过限定时间，直接执行点击事件
-                Log.d("yedona", "onViewClicked: 超过时间");
                 setTime(view);
                 joinPoint.proceed();
             }
