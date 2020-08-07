@@ -1,0 +1,38 @@
+apply plugin: 'com.android.application'
+apply plugin: 'android-aspectjx'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        applicationId "com.yedona.androidaopclick"
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    implementation project(":aopclick")
+
+    implementation "com.jakewharton:butterknife:8.8.1"
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    annotationProcessor "com.jakewharton:butterknife-compiler:8.5.1"
+
+}

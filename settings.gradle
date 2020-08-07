@@ -1,0 +1,3 @@
+include ':aopclick'
+include ':app'
+rootProject.name = "AndroidAOPClick"
