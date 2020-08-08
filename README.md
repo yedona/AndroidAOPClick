@@ -62,7 +62,7 @@ Android 使用AOP方式防止多次点击事件，支持Lambda，布局中设置
 
         AopClickUtils.setCheckTime(1000L);
 
-忽略拦截
+忽略拦截，加上注解Except
 
 	new View.OnClickListener() {
             @Except
