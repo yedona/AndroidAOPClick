@@ -12,37 +12,36 @@ Android 使用AOP方式防止多次点击时间，支持Lambda，布局中设置
 
 
 
-allprojects {
-
-	repositories {
-	
+    allprojects {
+	 repositories {
 		...
 		maven { url 'https://jitpack.io' }
-		
+		}  
+     }
+
+
+2). gradle 版本使用3.5.2，在项目的build.gradle中的allprojects中的repositories添加，
+
+
+	dependencies {
+  	  ...
+  	  classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.0'
+ 	   classpath "com.android.tools.build:gradle:3.5.2"
 	}
-            
-}
-
-
-2). 在项目的build.gradle中的allprojects中的repositories添加：
-
-
-dependencies {
-    ...
-    classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.0'
-}
 
 
 3). 在app的build.gradle中的最上面添加
 
-apply plugin: 'android-aspectjx'
+	apply plugin: 'android-aspectjx'
 
 4). 在模块下方添加
 
 
-   dependencies {
-        implementation 'com.github.yedona:AndroidAOPClick:1.0.0'
-   }
+  	 dependencies {
+     	   implementation 'com.github.yedona:AndroidAOPClick:1.0.0'
+  	 }
+   
+   
    
 二、使用方式
 
@@ -63,4 +62,13 @@ apply plugin: 'android-aspectjx'
 
         AopClickUtils.setCheckTime(1000L);
 
+忽略拦截
+
+	new View.OnClickListener() {
+            @Except
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
 
