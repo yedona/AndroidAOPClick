@@ -1,5 +1,5 @@
 # AndroidAOPClick
-Android 使用AOP方式防止多次点击时间，支持Lambda，布局中设置，butterknife注解
+Android 使用AOP方式防止多次点击事件，支持Lambda，布局中设置，butterknife注解
 
 注意事项
 
