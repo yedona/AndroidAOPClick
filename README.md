@@ -4,10 +4,12 @@ Android 使用AOP方式防止多次点击事件，支持Lambda，布局中设置
 注意事项
 
 1、Lambda表达式，butterknife，布局中设置不支持Except忽略注解
+
 2、Except忽略注解支持setOnClickListener()方式
 
 
 一、依赖
+
 1). 在根部目录的 build.gradle添加maven仓库
 
 
